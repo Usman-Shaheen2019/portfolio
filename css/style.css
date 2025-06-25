@@ -1,0 +1,210 @@
+/* Define a professional color palette using CSS variables */
+:root {
+    --primary-bg: #F8F8F8; /* Light gray/off-white for main background */
+    --secondary-bg: #FFFFFF; /* White for cards/sections */
+    --text-primary: #333333; /* Dark gray for main text */
+    --text-secondary: #555555; /* Medium gray for secondary text */
+    --accent-color: #007BFF; /* A subtle, professional blue for accents */
+    --border-color: #E0E0E0; /* Light gray for borders */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadow */
+}
+
+/* Apply base colors to the body */
+body {
+    background-color: var(--primary-bg);
+    color: var(--text-primary);
+}
+
+/* Header specific colors */
+header h1 {
+    color: var(--accent-color);
+}
+
+header h2,
+header p {
+    color: var(--text-secondary);
+}
+
+/* Keyframes for the falling bug animation */
+@keyframes fall {
+    0% {
+        top: -50px;
+        opacity: 1;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100vh;
+        opacity: 0;
+        transform: rotate(360deg);
+    }
+}
+
+/* Styling for the individual bug elements */
+.bug {
+    position: fixed;
+    font-size: 1.5rem; /* Adjust size as needed */
+    animation: fall linear infinite;
+    z-index: 0; /* Ensure bugs are behind content */
+    pointer-events: none; /* Allow clicks to pass through bugs */
+    user-select: none; /* Prevent text selection of bugs */
+    color: var(--text-secondary); /* Bugs will be a subtle gray */
+    /* Font Awesome specific styles */
+    font-family: "Font Awesome 6 Free"; 
+    font-weight: 900; /* For solid icons */
+}
+
+/* Ensure main content is above the bugs */
+.content {
+    position: relative;
+    z-index: 1;
+}
+
+/* Card hover effect */
+.card-hover {
+    transition: all 0.3s ease;
+    background: var(--secondary-bg); /* White background for cards */
+    box-shadow: 0 4px 12px var(--shadow-color); /* Subtle shadow */
+}
+
+.card-hover:hover {
+    transform: translateY(-5px); /* Lift card on hover */
+    box-shadow: 0 8px 20px var(--shadow-color); /* Enhanced shadow on hover */
+}
+
+/* Timeline item styling for education/experience */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -22px; /* Position the circle marker */
+    top: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: var(--accent-color); /* Accent color for marker */
+    border: 3px solid var(--border-color); /* Light gray border */
+}
+
+/* Skill pill styling */
+.skill-pill {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    margin: 0.25rem;
+    background: rgba(0, 123, 255, 0.1); /* Light accent color background */
+    border: 1px solid var(--border-color); /* Light gray border */
+    border-radius: 9999px; /* Fully rounded corners */
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    color: var(--text-secondary); /* Skill pill text color */
+}
+
+.skill-pill:hover {
+    background: rgba(0, 123, 255, 0.2); /* Slightly darker accent on hover */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}
+
+/* Section title underline effect */
+.section-title {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 2rem;
+    color: var(--text-primary); /* Section title text color */
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-color), transparent); /* Accent color gradient underline */
+    border-radius: 3px;
+}
+
+/* Navigation link hover effect */
+.nav-link {
+    position: relative;
+    overflow: hidden;
+    color: var(--text-secondary); /* Nav link text color */
+}
+
+.nav-link:hover {
+    color: var(--accent-color); /* Accent color on hover */
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-color); /* Accent color underline */
+    transition: width 0.3s ease; /* Smooth width transition */
+}
+
+.nav-link:hover::after {
+    width: 100%; /* Expand underline on hover */
+}
+
+/* Contact button hover effect */
+.contact-btn {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    background: var(--accent-color); /* Accent color background */
+    color: var(--secondary-bg); /* White text for contrast */
+}
+
+.contact-btn:hover {
+    background: #0056b3; /* Darker accent on hover */
+}
+
+.contact-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%; /* Start off-screen to the left */
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent); /* White swipe effect */
+    transition: all 0.6s ease;
+    z-index: -1; /* Behind the button text */
+}
+
+.contact-btn:hover::before {
+    left: 100%; /* Swipe across to the right */
+}
+
+/* Specific color applications for elements that don't use Tailwind's default text color */
+section h2,
+section h3,
+section h4 {
+    color: var(--accent-color);
+}
+
+section p,
+section span,
+section li {
+    color: var(--text-secondary);
+}
+
+/* Icons within sections */
+section i {
+    color: var(--accent-color);
+}
+
+/* Image border */
+section img {
+    border-color: var(--border-color);
+}
+
+/* Timeline border */
+.card-hover .relative .border-l-2 {
+    border-color: var(--accent-color);
+}
+
+/* Contact links */
+#contact a {
+    color: var(--accent-color);
+}
